@@ -1,0 +1,60 @@
+Started by user Lalitha Mahalakshmi Kollipara
+Obtained first_jenkins_pipeline_project/Jenkinsfile from git https://github.com/Lalitha019/Jenkins-Projects.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /home/ubuntu/.jenkins/workspace/first-jenkins-job
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/ubuntu/.jenkins/workspace/first-jenkins-job/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Lalitha019/Jenkins-Projects.git # timeout=10
+Fetching upstream changes from https://github.com/Lalitha019/Jenkins-Projects.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.53.0'
+ > git fetch --tags --force --progress -- https://github.com/Lalitha019/Jenkins-Projects.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 75cc9b1160e6bd4dd5cc42cbc491d6cb15025926 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 75cc9b1160e6bd4dd5cc42cbc491d6cb15025926 # timeout=10
+Commit message: "Added first Jenkins pipeline project"
+ > git rev-list --no-walk 75cc9b1160e6bd4dd5cc42cbc491d6cb15025926 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:16-alpine
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 1000:1000 -w /home/ubuntu/.jenkins/workspace/first-jenkins-job -v /home/ubuntu/.jenkins/workspace/first-jenkins-job:/home/ubuntu/.jenkins/workspace/first-jenkins-job:rw,z -v /home/ubuntu/.jenkins/workspace/first-jenkins-job@tmp:/home/ubuntu/.jenkins/workspace/first-jenkins-job@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:16-alpine cat
+$ docker top 357745100f007d4a36acdebfbfc3638405a4e8ec7737fe3f0c60dfefde7fc11c -eo pid,comm
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
++ node --version
+v16.20.2
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+$ docker stop --time=1 357745100f007d4a36acdebfbfc3638405a4e8ec7737fe3f0c60dfefde7fc11c
+$ docker rm -f --volumes 357745100f007d4a36acdebfbfc3638405a4e8ec7737fe3f0c60dfefde7fc11c
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
